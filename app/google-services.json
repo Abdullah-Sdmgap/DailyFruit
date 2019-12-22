@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "563628426213",
+    "firebase_url": "https://dailyfruit.firebaseio.com",
+    "project_id": "dailyfruit",
+    "storage_bucket": "dailyfruit.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:563628426213:android:5ddfefcea6b466ae45e50c",
+        "android_client_info": {
+          "package_name": "com.codesdel.dailyfruit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "563628426213-6g3qg65cmt1pefcifs7vlbjefhftp5lj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.codesdel.dailyfruit",
+            "certificate_hash": "80aa2fcac0fe671b244fae2dd1fdfe2bba5f6a25"
+          }
+        },
+        {
+          "client_id": "563628426213-bsj3bj12ui78gpmerti2rp1125oujdcb.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDlJvhasGkwjR_eqaEQ34oC5wS7lYvPcRk"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "563628426213-bsj3bj12ui78gpmerti2rp1125oujdcb.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
