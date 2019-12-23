@@ -29,7 +29,7 @@ import java.util.HashMap;
 public class RegisterActivity extends AppCompatActivity
 {
 
-    private Button CreateAccountButton;
+    private Button CreateAccountButton, AlreadyHaveAccountButton;
     private EditText InputName, InputPhoneNumber, InputPassword;
     private ProgressDialog loadingBar;
 
@@ -40,10 +40,23 @@ public class RegisterActivity extends AppCompatActivity
         setContentView(R.layout.activity_register);
 
         CreateAccountButton = (Button)findViewById(R.id.register_btn);
+        AlreadyHaveAccountButton = (Button)findViewById(R.id.register_login_btn);
         InputName = (EditText)findViewById(R.id.register_username_input);
         InputPhoneNumber = (EditText)findViewById(R.id.register_phone_number_input);
         InputPassword = (EditText)findViewById(R.id.register_password_input);
         loadingBar = new ProgressDialog(this);
+
+
+        //AlreadyHaveAccount goto Login Activity
+        AlreadyHaveAccountButton.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+            }
+        });
+
 
 
 
@@ -63,7 +76,7 @@ public class RegisterActivity extends AppCompatActivity
         String phone = InputPhoneNumber.getText().toString();
         String password = InputPassword.getText().toString();
 
-        //Check isEmpty null
+        //Check isEmpty null check
         if (TextUtils.isEmpty(name))
         {
             Toast.makeText(this, "Please enter your name...", Toast.LENGTH_SHORT).show();
@@ -79,7 +92,7 @@ public class RegisterActivity extends AppCompatActivity
         else
             {
                 loadingBar.setTitle("Create Account");
-                loadingBar.setIcon(R.drawable.check_register);
+                loadingBar.setIcon(R.drawable.custom_toast_icon);
                 loadingBar.setMessage("Please wait, while we are checking your credentials");
                 loadingBar.setCanceledOnTouchOutside(false);
                 loadingBar.show();
