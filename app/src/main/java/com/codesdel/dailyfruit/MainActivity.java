@@ -71,7 +71,7 @@ public class MainActivity extends AppCompatActivity
             if (!TextUtils.isEmpty(UserPhoneKey)  &&  !TextUtils.isEmpty(UserPasswordKey))
             {
                 AllowAccess(UserPhoneKey, UserPasswordKey);
-                
+
                 //For showing Progress LoginDialog
                 loadingBar.setTitle("You are already login");
                 loadingBar.setMessage("Please wait...!!!");

@@ -10,6 +10,7 @@ import android.text.TextUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import com.codesdel.dailyfruit.Model.Users;
@@ -28,6 +29,7 @@ public class LoginActivity extends AppCompatActivity
     private EditText InputPhoneNumber, InputPassword;
     private Button LoginButton, CreateNewAccountBtn;
     private ProgressDialog loadingBar;
+    private TextView AdminLink, NotAdminLink;
     private String parentDbName = "Users";
 
     private com.rey.material.widget.CheckBox chkBoxRememberMe;
@@ -43,6 +45,11 @@ public class LoginActivity extends AppCompatActivity
         InputPassword = (EditText) findViewById(R.id.login_password_input);
         InputPhoneNumber = (EditText) findViewById(R.id.login_phone_number_input);
 
+        //AdminPanel FindViewID
+        AdminLink = (TextView)findViewById(R.id.admin_panel_link);
+        NotAdminLink = (TextView)findViewById(R.id.not_admin_panel_link);
+
+
         //LoadingBar casting
         loadingBar = new ProgressDialog(this);
 
@@ -50,6 +57,7 @@ public class LoginActivity extends AppCompatActivity
         chkBoxRememberMe = (CheckBox) findViewById(R.id.remember_me_chkb);
         Paper.init(this);
 
+        //LoginButton OnClickListener Set
         LoginButton.setOnClickListener(new View.OnClickListener()
         {
             @Override
@@ -58,9 +66,40 @@ public class LoginActivity extends AppCompatActivity
                 LoginUser();
             }
         });
-        CreateNewAccountBtn.setOnClickListener(new View.OnClickListener() {
+        //AdminText onClickListener Set
+        AdminLink.setOnClickListener(new View.OnClickListener()
+        {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
+                //When User Click I'm an Admin than "LoginButton" Text Change in "Login Admin"
+                LoginButton.setText("Login Admin");
+                AdminLink.setVisibility(View.INVISIBLE);//When LoginAdmin text Show at this time I'm an admin Text will'be hide or invisible
+                NotAdminLink.setVisibility(View.VISIBLE);//When LoginAdmin text Show at this time NotAdmin Text will'be visible
+
+                parentDbName = "Admins";//Here now change user account to Switch Admins account
+            }
+        });
+
+        NotAdminLink.setOnClickListener(new View.OnClickListener()
+        {
+            @Override
+            public void onClick(View v)
+            {
+                //Now all function working as login info
+                LoginButton.setText("Login");
+                AdminLink.setVisibility(View.VISIBLE);
+                NotAdminLink.setVisibility(View.INVISIBLE);
+                parentDbName = "Users";
+            }
+        });
+
+        CreateNewAccountBtn.setOnClickListener(new View.OnClickListener()
+
+        {
+            @Override
+            public void onClick(View v)
+            {
                 startActivity(new Intent(LoginActivity.this, RegisterActivity.class));
                 finish();//When Click BackPressButton than he back redirectTo MainActivity
             }
@@ -69,6 +108,7 @@ public class LoginActivity extends AppCompatActivity
 
     }
 
+    //Login User
     private void LoginUser()
     {
         //Get Data text To Convert String
@@ -99,6 +139,8 @@ public class LoginActivity extends AppCompatActivity
         }
     }
 
+
+
     private void AllowAccessToAccount(final String phone, final String password)
     {
         if (chkBoxRememberMe.isChecked())
@@ -127,10 +169,20 @@ public class LoginActivity extends AppCompatActivity
                     {
                         if (usersData.getPassword().equals(password))
                         {
-                            Toast.makeText(LoginActivity.this, "Logged in Successfully....", Toast.LENGTH_SHORT).show();
-                            loadingBar.dismiss();
+                           if (parentDbName.equals("Admins"))
+                           {
+                               Toast.makeText(LoginActivity.this, "Welcome Admin Your're, Logged in Successfully....", Toast.LENGTH_SHORT).show();
+                               loadingBar.dismiss();
 
-                            startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                               startActivity(new Intent(LoginActivity.this, AdminAddNewProductActivity.class));
+                           }
+                           else if (parentDbName.equals("Users"))
+                               {
+                                   Toast.makeText(LoginActivity.this, "Logged in Successfully....", Toast.LENGTH_SHORT).show();
+                                   loadingBar.dismiss();
+
+                                   startActivity(new Intent(LoginActivity.this, HomeActivity.class));
+                               }
                         }
                         else
                         {
