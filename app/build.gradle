@@ -41,4 +41,7 @@ dependencies {
     implementation 'com.google.firebase:firebase-core:17.2.1'
     implementation 'com.google.firebase:firebase-database:19.2.0'
     implementation 'com.google.firebase:firebase-storage:19.1.0'
+
+    //Paper Library
+    implementation 'io.paperdb:paperdb:2.6'
 }

@@ -7,6 +7,8 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 
+import io.paperdb.Paper;
+
 public class HomeActivity extends AppCompatActivity
 {
 
@@ -22,7 +24,11 @@ public class HomeActivity extends AppCompatActivity
 
         LogoutBtn.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View v)
+            {
+                //When user logout we will delete his Default User Password
+                Paper.book().destroy();
+
                 startActivity(new Intent(HomeActivity.this, LoginActivity.class));
                 finish();
             }

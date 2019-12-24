@@ -54,6 +54,7 @@ public class RegisterActivity extends AppCompatActivity
             public void onClick(View v)
             {
                 startActivity(new Intent(RegisterActivity.this,LoginActivity.class));
+                finish();//When Click BackPressButton than he back redirectTo MainActivity
             }
         });
 
@@ -92,7 +93,7 @@ public class RegisterActivity extends AppCompatActivity
         else
             {
                 loadingBar.setTitle("Create Account");
-                loadingBar.setIcon(R.drawable.custom_toast_icon);
+                loadingBar.setIcon(R.drawable.sync_icon);
                 loadingBar.setMessage("Please wait, while we are checking your credentials");
                 loadingBar.setCanceledOnTouchOutside(false);
                 loadingBar.show();
