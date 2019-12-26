@@ -7,6 +7,7 @@ import android.widget.Toast;
 
 public class AdminAddNewProductActivity extends AppCompatActivity
 {
+    private String CategoryName;
 
     @Override
     protected void onCreate(Bundle savedInstanceState)
@@ -14,6 +15,10 @@ public class AdminAddNewProductActivity extends AppCompatActivity
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_admin_add_new_product);
 
-        Toast.makeText(this, "Welcome Admin Home", Toast.LENGTH_SHORT).show();
+        //Here storing data inside this category name
+        CategoryName = getIntent().getExtras().get("category").toString();
+
+
+        Toast.makeText(this, CategoryName, Toast.LENGTH_SHORT).show();
     }
 }
