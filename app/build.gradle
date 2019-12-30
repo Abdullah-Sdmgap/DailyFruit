@@ -47,6 +47,12 @@ dependencies {
     implementation 'com.google.firebase:firebase-database:19.2.0'
     implementation 'com.google.firebase:firebase-storage:19.1.0'
 
+    // FirebaseUI for Firebase Realtime Database
+    implementation 'com.firebaseui:firebase-ui-database:6.2.0'
+
+    //Picasso
+    implementation 'com.squareup.picasso:picasso:2.71828'
+
     //Paper Library
     implementation 'io.paperdb:paperdb:2.6'
 
